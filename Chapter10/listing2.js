@@ -2,6 +2,7 @@
  * New node file
  */
 
+process.stdin.resume();
 var server = require('net').createServer(function(socket){
 	console.log('new connection');
 	
@@ -24,5 +25,7 @@ var server = require('net').createServer(function(socket){
 	socket.on('error',function(err){
 		console.log(err);
 	});
+	
+	process.stdin.pipe(conn);
 	
 }).listen(4001);
